@@ -2,12 +2,15 @@
 
 Node application to calculate BMI for the patient records
 
-## prerequisite
+## Prerequisite
 * Node.js 16.13
 
-## Libraries
+### Libraries
 * event-stream
 * JSONStream
+#### Dev dependencies
+* mocha
+* chai
 
 ### Setting up application
 * Clone the repo `git clone git@github.com:SreekeshOkky/patientBMIRecord.git`
@@ -17,3 +20,6 @@ Node application to calculate BMI for the patient records
 
 ### Update patient data source
 * Place the raw file in the pre-defined format inside source folder and update the file name in `index.js`
+
+### Testing
+* Run `npm test`

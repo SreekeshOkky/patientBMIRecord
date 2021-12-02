@@ -36,14 +36,14 @@
             35,
             39.9
         ],
-        "label": "Severel obese",
+        "label": "Severely obese",
         "risk": "High risk"
     },
     {
         "range": [
             40
         ],
-        "label": "Very severel obese",
+        "label": "Very severely obese",
         "risk": "Very high risk"
     }
 ]
