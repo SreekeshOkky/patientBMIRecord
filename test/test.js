@@ -2,9 +2,9 @@
 
 const expect = require('chai').expect;
 
-describe('Validate BMI calculation', () => {
+describe('Validate BMI category', () => {
 
-    const { checkBMI } = require('./../src/utils/bmiUtils');
+    const { getPatientBMIDetails } = require('./../src/utils/bmiUtils');
 
     it("Underweight", () => {
 
@@ -13,7 +13,7 @@ describe('Validate BMI calculation', () => {
             "HeightCm": 170,
             "WeightKg": 45
         };
-        const bmiDetail = checkBMI(patient);
+        const bmiDetail = getPatientBMIDetails(patient);
 
         expect(bmiDetail.label).to.equal('Underweight')
     });
@@ -25,7 +25,7 @@ describe('Validate BMI calculation', () => {
             "HeightCm": 180,
             "WeightKg": 77
         };
-        const bmiDetail = checkBMI(patient);
+        const bmiDetail = getPatientBMIDetails(patient);
 
         expect(bmiDetail.label).to.equal('Normal weight')
     });
@@ -37,7 +37,7 @@ describe('Validate BMI calculation', () => {
             "HeightCm": 180,
             "WeightKg": 100
         };
-        const bmiDetail = checkBMI(patient);
+        const bmiDetail = getPatientBMIDetails(patient);
 
         expect(bmiDetail.label).to.equal('Overweight')
     });
@@ -49,7 +49,7 @@ describe('Validate BMI calculation', () => {
             "HeightCm": 100,
             "WeightKg": 77
         };
-        const bmiDetail = checkBMI(patient);
+        const bmiDetail = getPatientBMIDetails(patient);
 
         expect(bmiDetail.label).to.equal('Severely obese')
     });
@@ -61,7 +61,7 @@ describe('Validate BMI calculation', () => {
             "HeightCm": 170,
             "WeightKg": 145
         };
-        const bmiDetail = checkBMI(patient);
+        const bmiDetail = getPatientBMIDetails(patient);
 
         expect(bmiDetail.label).to.equal('Very severely obese')
     });
@@ -72,7 +72,7 @@ describe('Validate BMI calculation', () => {
             "Gender": "Female",
             "HeightCm": 170
         };
-        const bmiDetail = checkBMI(patient);
+        const bmiDetail = getPatientBMIDetails(patient);
 
         expect(bmiDetail).to.be.a('undefined')
     });
@@ -80,7 +80,7 @@ describe('Validate BMI calculation', () => {
     it("Empty data", () => {
 
         const patient = {};
-        const bmiDetail = checkBMI(patient);
+        const bmiDetail = getPatientBMIDetails(patient);
 
         expect(bmiDetail).to.be.a('undefined')
     });

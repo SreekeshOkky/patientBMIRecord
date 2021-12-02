@@ -3,20 +3,15 @@
 const { isInRange } = require('./util');
 
 /**
- * 
+ * Calculate the BMI value
  * @param {number} heightCm 
  * @param {number} weightKg 
  * @returns {number} calculated BMI
  */
- const calculateBMI = (heightCm, weightKg) => {
-
-    const heightM = heightCm / 100;
-    const bmi = weightKg / (heightM * 2);
-    return bmi;
-};
+ const calculateBMI = (heightCm, weightKg) =>  weightKg / ((heightCm / 100) * 2);
 
 /**
- * 
+ * Find the BMI details for the BMI value
  * @param {number} bmi 
  * @returns Matching bmi record for the BMI
  */
@@ -27,18 +22,16 @@ const getBMIdetail = (bmi) => {
 };
 
 /**
- * 
+ * Find patient BMI category details
  * @param {object} patient 
  * @returns Get the bmi detail for the patient
  */
- const checkBMI = (patient) => {
+ const getPatientBMIDetails = (patient) => {
 
     const bmi = calculateBMI(patient.HeightCm, patient.WeightKg);
-    const bmiDetail = getBMIdetail(bmi);
-
-    return bmiDetail[0];
+    return getBMIdetail(bmi)[0];
 };
 
 module.exports = {
-    checkBMI
+    getPatientBMIDetails
 }

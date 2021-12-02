@@ -44,7 +44,11 @@ const getDataStream = function (file) {
  */
 const writeToFile = (file, data) => {
 
-    fs.appendFileSync(file, data)
+    try {
+        fs.appendFileSync(file, data);
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 /**

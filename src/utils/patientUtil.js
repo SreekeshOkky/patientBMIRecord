@@ -3,7 +3,7 @@
 const es = require('event-stream');
 
 const { getDataStream, writeToFile, clearFile } = require('./util');
-const { checkBMI } = require('./bmiUtils');
+const { getPatientBMIDetails } = require('./bmiUtils');
 const outputFile = './output/updatedRecord.json';
 
 let initialLine = true;
@@ -25,7 +25,7 @@ const updatePatientRecord = (record, bmiData) => {
 }
 
 /**
- * 
+ * Stream the patient records, process the patient and save the updated records and store patient / category count
  * @param {string} file 
  * @returns BMI category wise count for the patients
  */
@@ -38,7 +38,10 @@ const categorizePatient = async (file) => {
         stream
             .pipe(es.map(patientRecord => {
                 processPatientrecord(patientRecord);
-            }))
+            }));
+        stream.on('error', function (err) {
+            console.log(err);
+        });
         const fileStreamPromise = new Promise(resolve => stream.on('end', () => resolve()));
         await fileStreamPromise;
         writeToFile(outputFile, ']');
@@ -57,13 +60,13 @@ const resetAll = () => {
 }
 
 /**
- * Process teh given record and write updated record to output file
+ * Process the given record and write updated record to output file
  * @param {object} patientRecord 
  * @param {boolean} write 
  */
 const processPatientrecord = (patientRecord, write = true) => {
 
-    const bmiDetail = checkBMI(patientRecord);
+    const bmiDetail = getPatientBMIDetails(patientRecord);
     const bmiType = bmiDetail && bmiDetail.label ? bmiDetail.label : 'error';
     category[bmiType] = category[bmiType] ? (category[bmiType] + 1) : 1;
     patientRecord = updatePatientRecord(patientRecord, bmiDetail);
