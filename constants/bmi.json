@@ -1,0 +1,49 @@
+[
+    {
+        "range": [
+            0,
+            18.4
+        ],
+        "label": "Underweight",
+        "risk": "Malnutrition risk"
+    },
+    {
+        "range": [
+            18.5,
+            24.9
+        ],
+        "label": "Normal weight",
+        "risk": "Low risk"
+    },
+    {
+        "range": [
+            25,
+            29.9
+        ],
+        "label": "Overweight",
+        "risk": "Enhanced risk"
+    },
+    {
+        "range": [
+            30,
+            34.9
+        ],
+        "label": "Moderately obese",
+        "risk": "Enhanced risk"
+    },
+    {
+        "range": [
+            35,
+            39.9
+        ],
+        "label": "Severel obese",
+        "risk": "High risk"
+    },
+    {
+        "range": [
+            40
+        ],
+        "label": "Very severel obese",
+        "risk": "Very high risk"
+    }
+]
